@@ -2,6 +2,7 @@ const inputDOB = document.getElementById("dob")
 const inputNumber = document.getElementById("luckyNumber")
 const buttonCheck = document.getElementById("check")
 const messageText = document.querySelector(".message")
+const imgLoading = document.querySelector(".loading")
 
 function isLeapYear(year) {
     if ((year % 400 == 0) && (year % 100 != 0) || (year % 4 == 0)) return true;
@@ -165,10 +166,13 @@ function handleButtonClick() {
     let dateString = getDateStringObject(dateObject);
     let formatedDateList = getDateStringInAllFormat(dateString);
     let isPelindrome = checkPelindromeForAllFormat(formatedDateList);
+
     if (isPelindrome) {
+        imgLoading.style.display = "none"
         messageText.style.display = "block"
         messageText.innerHTML = "Your birthday is palindrome!"
     } else {
+        imgLoading.style.display = "none"
         let [daysNext, dateNext] = getNextPalindromeDate(dateObject)
         let [daysPrev, datePrev] = getPreviousPalindromeDate(dateObject)
 
@@ -185,4 +189,9 @@ function handleButtonClick() {
 
 
 
-buttonCheck.addEventListener('click', handleButtonClick)
+buttonCheck.addEventListener('click', () => {
+    imgLoading.style.display = "block"
+    setTimeout(() => {
+        handleButtonClick()
+    }, 2000);
+})

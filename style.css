@@ -47,6 +47,10 @@ input {
   font-size: larger;
   font-weight: 600;
 }
+
+.loading {
+  display: none;
+}
 footer {
   margin-top: 5rem;
   display: flex;
