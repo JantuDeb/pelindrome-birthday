@@ -46,6 +46,8 @@ input {
   display: none;
   font-size: larger;
   font-weight: 600;
+  text-align: center;
+  margin: 0rem 1rem;
 }
 
 .loading {

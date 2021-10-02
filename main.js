@@ -160,7 +160,10 @@ function checkPelindromeForAllFormat(listOfDates) {
 
 
 function handleButtonClick() {
+    console.log("sahsaf ashdfahsf ");
     let input = inputDOB.value;
+    console.log(input);
+
     let dateArray = input.split('-');
     let dateObject = { day: parseInt(dateArray[2]), month: parseInt(dateArray[1]), year: parseInt(dateArray[0]) };
     let dateString = getDateStringObject(dateObject);
@@ -185,13 +188,21 @@ function handleButtonClick() {
         }
 
     }
+
 }
 
 
 
 buttonCheck.addEventListener('click', () => {
     imgLoading.style.display = "block"
-    setTimeout(() => {
-        handleButtonClick()
-    }, 2000);
+    messageText.style.display = "none"
+    if (inputDOB.value === undefined || inputDOB.value === "") {
+        imgLoading.style.display = "none"
+        messageText.style.display = "block"
+        messageText.innerHTML = "Pick Your birthday"
+    } else {
+        setTimeout(() => {
+            handleButtonClick()
+        }, 2000);
+    }
 })
